@@ -13,7 +13,7 @@ FROM golang:1.20.5
 
 WORKDIR /app
 COPY --from=builder /app/origin-server .
-COPY ./static /app/static
+COPY ../static /app/static
 
 # サーバーの起動
 CMD ["./origin-server"]
