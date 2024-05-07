@@ -8,12 +8,12 @@ import (
 )
 
 func main() {
-	origin, _ := url.Parse("http://origin:8080")
+	cache, _ := url.Parse("http://cache:8081")
 
-	proxy := httputil.NewSingleHostReverseProxy(origin)
+	proxy := httputil.NewSingleHostReverseProxy(cache)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		log.Print("proxying to origin...")
+		log.Print("proxying to cache...")
 		proxy.ServeHTTP(w, r)
 	})
-	http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(":8082", nil)
 }

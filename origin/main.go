@@ -22,7 +22,7 @@ func main() {
 
 func logRequest(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		log.Println(r.URL.Path)
+		log.Println("origin is called!")
 		handler.ServeHTTP(w, r)
 	})
 }
